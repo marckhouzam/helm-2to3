@@ -49,6 +49,9 @@ func NewRootCmd(out io.Writer, args []string) *cobra.Command {
 		newCleanupCmd(out),
 		newConvertCmd(out),
 		newMoveConfigCmd(out),
+
+		// Hidden commands
+		newCompleteCmd(out),
 	)
 
 	return cmd
