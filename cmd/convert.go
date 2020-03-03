@@ -86,7 +86,6 @@ func runConvert(cmd *cobra.Command, args []string) error {
 	}
 	kubeConfig := common.KubeConfig{
 		Context: settings.KubeContext,
-		File:    settings.KubeConfigFile,
 	}
 
 	return Convert(convertOptions, kubeConfig)

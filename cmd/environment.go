@@ -20,7 +20,6 @@ import "github.com/spf13/pflag"
 
 type EnvSettings struct {
 	DryRun           bool
-	KubeConfigFile   string
 	KubeContext      string
 	Label            string
 	ReleaseStorage   string
@@ -41,7 +40,6 @@ func (s *EnvSettings) AddBaseFlags(fs *pflag.FlagSet) {
 // AddFlags binds flags to the given flagset.
 func (s *EnvSettings) AddFlags(fs *pflag.FlagSet) {
 	s.AddBaseFlags(fs)
-	fs.StringVar(&s.KubeConfigFile, "kubeconfig", "", "path to the kubeconfig file")
 	fs.StringVarP(&s.TillerNamespace, "tiller-ns", "t", "kube-system", "namespace of Tiller")
 	fs.StringVarP(&s.Label, "label", "l", "OWNER=TILLER", "label to select Tiller resources by")
 	fs.BoolVar(&s.TillerOutCluster, "tiller-out-cluster", false, "when  Tiller is not running in the cluster e.g. Tillerless")
