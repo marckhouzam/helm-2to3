@@ -19,6 +19,7 @@ package cmd
 import (
 	"errors"
 	"io"
+	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -44,6 +45,8 @@ func NewRootCmd(out io.Writer, args []string) *cobra.Command {
 	flags := cmd.PersistentFlags()
 	flags.Parse(args)
 	settings = new(EnvSettings)
+
+	settings.KubeContext = os.Getenv("HELM_KUBECONTEXT")
 
 	cmd.AddCommand(
 		newCleanupCmd(out),
